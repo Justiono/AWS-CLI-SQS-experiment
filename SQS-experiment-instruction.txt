@@ -3,7 +3,7 @@ This experiment requires:
 - an AWS account
 
 1. Create SQS standard queue (in this case, using a CloudFormation template)
-	aws cloudformation create-stack --stack-name jpsqs-std-stack --template-body file:///jpapp/scripts/jpsqs01.yml
+	aws cloudformation create-stack --stack-name jpsqs-std-stack --template-body file:///jpapp/scripts/jpsqs-std.yml
 	aws cloudformation describe-stacks --stack-name jpsqs-std-stack
 2. Edit variables in sqs-std-send-msg.bash and sqs-std-receive-msg.bash scripts according to your environment.
 3. Open multiple shell windows
@@ -15,7 +15,7 @@ This experiment requires:
 5. When you are done, delete standard queues
 	aws cloudformation delete-stack --stack-name jpsqs-std-stack
 6. Create SQS FIFO queue
-	aws cloudformation create-stack --stack-name jpsqs-fifo-stack --template-body file:///jpapp/scripts/jpsqs02.yml
+	aws cloudformation create-stack --stack-name jpsqs-fifo-stack --template-body file:///jpapp/scripts/jpsqs-fifo.yml
 	aws cloudformation describe-stack --stack-name jpsqs-fifo-stack
 7. Repeat step 2-4 using scripts sqs-fifo-send-msg.bash and then sqs-fifo-receive-msg.bash
    Compare the write and read throughput difference between standard and FIFO queues. Also notice that the message will be read in sequential order in FIFO queue.
